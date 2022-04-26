@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    position: relative;
+    height: 100vh;
+    background-color: #444;
+    padding: 0 10px;
+}
+
+.btn-reset {
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    font-family: inherit;
+    background-color: transparent;
+}
+
+/* Map */
+
+.map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    height: 100vh;
+}
+
+.map svg {
+    max-width: 100%;
+    max-height: calc(100% - 30px);
+}
+
+/* Region */
+
+.region path {
+    transition: fill 0.3s;
+}
+
+.region path:hover {
+    fill: #3c7072;
+}
+
+.region text {
+    pointer-events: none;
+}
+
+.region--disabled {
+    pointer-events: none;
+    fill: #606060;
+}
+
+/* Refresh */
+
+.refresh {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 2px;
+    font-size: 30px;
+    border-radius: 5px;
+    border: 3px solid #ccc;
+    transition: background-color 0.3s;
+}
+
+.refresh:hover {
+    background-color: #fff;
+}
+
+
+.refresh--active svg {
+    animation: rotateAnimation 1s;
+}
+
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,17 +1,10 @@
 export interface ISvgRegion {
-    id?: string;
+    id?: number;
     title?: string;
     titleX?: number;
     titleY?: number;
+    fill?: string;
     fontSize?: number;
     d?: string;
-    fill?: string;
-    textFill?: string;
-    stroke?: string;
-    textStroke?: string;
-    strokeWidth?: number;
-    strokeLinecap?: any;
-    strokeLinejoin?: any;
-    fontFamily?: string;
-    letterSpacing?: number;
+    disabled?: boolean;
 }

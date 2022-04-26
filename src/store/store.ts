@@ -1,14 +1,16 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { mapAPI } from "../services/MapService";
+import { alarmAPI } from "../services/AlarmService";
+import alarmReducer from './reducers/alarmSlice'
 
 const rootReducer = combineReducers({
-    [mapAPI.reducerPath]: mapAPI.reducer
+    alarmReducer,
+    [alarmAPI.reducerPath]: alarmAPI.reducer
 })
 
 export const setupStore = () => {
     return configureStore({
         reducer: rootReducer,
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(mapAPI.middleware)
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(alarmAPI.middleware)
     })
 }
 

@@ -1,76 +1,56 @@
-import { SvgRegionRepository } from "../../repository/SvgRegionRepository";
-import { IRegion } from "../../types/IRegion";
-import { Status } from "../../types/Status";
-import { Region } from "./Region";
-import { useEffect, useState } from "react";
-import { COLOR_ALARM, COLOR_DEFAULT, INTERVAL_SEC } from "../../utils/consts";
-import { RegionRepository } from "../../repository/RegionRepository";
-import { TelegramRegionStatusService } from "../../api/telegram/TelegramRegionStatusService";
-import { BiRefresh } from 'react-icons/bi'
-import './Map.css'
+import { Region } from './Region'
+import { FC, useEffect } from 'react'
+import { COLOR_ALARM, COLOR_DEFAULT } from '../../utils/consts'
+import { regions } from '../../data/regions'
+import { useFetchAlarmMapQuery } from '../../services/AlarmService'
+import { IRegion } from '../../types/IRegion'
+import { Refresh } from './Refresh'
+import { useDispatch } from 'react-redux'
+import { removeAlarmRegion, setAlarmRegion } from '../../store/reducers/alarmSlice'
+import { useAppSelector } from '../../hooks/redux'
 
-const svgRegions: any = new SvgRegionRepository().getAll();
+export const Map: FC = () => {
 
-// const {data, isLoading} = useFetchMapQuery([], {pollingInterval: 20000})
-
-export const Map = () => {
-
-    const [alarmRegions, setAlarmRegions] = useState<IRegion[]>([])
-    let [seconds, setSeconds] = useState<number>(INTERVAL_SEC)
+    const { data } = useFetchAlarmMapQuery([], {pollingInterval: 10000})
+    const { alarmRegions } = useAppSelector(state => state.alarmReducer)
+    const dispatch = useDispatch()
+    const states: IRegion[] = data?.states;
 
     const loadRegions = async () => {
-        const statusService = new TelegramRegionStatusService();
+        states?.forEach(region => {
+            /* Если у региона тревога, и его нет в массиве */
 
-        let regions: IRegion[] = [];
-
-        for (let region of new RegionRepository().getAll()) {
-            region.status = await statusService.getStatus(region);
-            regions.push(region)
-        }
-        
-        await setAlarmRegions(regions);
+            if(region.alert && !alarmRegions.includes(region)) {
+                dispatch(setAlarmRegion(region))
+            } else {
+                dispatch(removeAlarmRegion(region.id))
+            }
+        })
     };
 
     useEffect(() => {
         loadRegions()
-    }, [])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [data])
 
-    useEffect(() => {
-        setTimeout(async () => {
-            if(seconds > 1) {
-                await setSeconds(seconds - 1)
-            } else {
-                await loadRegions()
-                await setSeconds(INTERVAL_SEC)
-            }
-        }, INTERVAL_SEC * 100)
-    }, [seconds])
-
+    console.log(alarmRegions);
+    
     return (
-        <>
-            <div className="map">
-                <svg viewBox="0 0 1000 670" fill={COLOR_DEFAULT} xmlns="http://www.w3.org/2000/svg">
-                    <g id="map">
-                        {svgRegions.map((svgRegion: any, idx: number) => {
+        <div className="map">
+            <svg viewBox="0 0 1000 670" fill={COLOR_DEFAULT} xmlns="http://www.w3.org/2000/svg">
+                <g id="map">
+                    {regions?.map((region, idx) => {
 
-                            const alarmRegion = alarmRegions.find((region: any) => region.id === svgRegion.id);
-                            
-                            if (alarmRegion) {
-                                svgRegion.title = alarmRegion.title;
-                                svgRegion.fill = alarmRegion.status === Status.ALERT && COLOR_ALARM;
-                            }
+                        const alarmRegion = alarmRegions.find(alarmRegion => alarmRegion.id === region.id);
+                                    
+                        alarmRegion ? region.fill = COLOR_ALARM : region.fill = COLOR_DEFAULT
 
-                            return (
-                                <Region key={idx} region={svgRegion}/>
-                            )
-                        })}
-                    </g>
-                </svg>
-            </div>
-            <div className="refresh">
-                <BiRefresh />
-                {seconds}
-            </div>
-        </>
+                        return (
+                            <Region key={idx} region={region}/>
+                        )
+                    })}
+                </g>
+            </svg>
+        </div>
     )
 }
