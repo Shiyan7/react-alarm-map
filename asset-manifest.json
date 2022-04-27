@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-alarm-map/static/css/main.9c81d9f7.css",
-    "main.js": "/react-alarm-map/static/js/main.4ba42692.js",
+    "main.css": "/react-alarm-map/static/css/main.549b63ac.css",
+    "main.js": "/react-alarm-map/static/js/main.dfb5fa85.js",
     "index.html": "/react-alarm-map/index.html",
-    "main.9c81d9f7.css.map": "/react-alarm-map/static/css/main.9c81d9f7.css.map",
-    "main.4ba42692.js.map": "/react-alarm-map/static/js/main.4ba42692.js.map"
+    "main.549b63ac.css.map": "/react-alarm-map/static/css/main.549b63ac.css.map",
+    "main.dfb5fa85.js.map": "/react-alarm-map/static/js/main.dfb5fa85.js.map"
   },
   "entrypoints": [
-    "static/css/main.9c81d9f7.css",
-    "static/js/main.4ba42692.js"
+    "static/css/main.549b63ac.css",
+    "static/js/main.dfb5fa85.js"
   ]
 }
