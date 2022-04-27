@@ -47,6 +47,9 @@ body {
 
 .region--disabled {
     pointer-events: none;
+}
+
+.region--disabled path {
     fill: #606060;
 }
 

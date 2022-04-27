@@ -31,10 +31,8 @@ export const Map: FC = () => {
     useEffect(() => {
         loadRegions()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data])
+    }, [data, alarmRegions])
 
-    console.log(alarmRegions);
-    
     return (
         <div className="map">
             <svg viewBox="0 0 1000 670" fill={COLOR_DEFAULT} xmlns="http://www.w3.org/2000/svg">
