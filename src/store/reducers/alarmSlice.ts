@@ -13,18 +13,14 @@ export const alarmSlice = createSlice({
     name: 'alarmSlice',
     initialState,
     reducers: {
-        setAlarmRegion: (state, action) => {
-            state.alarmRegions = [...state.alarmRegions, action.payload]
+        setAlarmRegions: (state, action) => {
+            state.alarmRegions = action.payload
         },
-        removeAlarmRegion: (state, action) => {
-            state.alarmRegions.filter(region => region.id !== action.payload)
-        }
     }
 })
 
 export const {
-    setAlarmRegion,
-    removeAlarmRegion,
+    setAlarmRegions
 } = alarmSlice.actions
 
 export default alarmSlice.reducer

@@ -73,8 +73,7 @@ body {
     background-color: #fff;
 }
 
-
-.refresh--active svg {
+.refresh:active svg {
     animation: rotateAnimation 1s;
 }
 
