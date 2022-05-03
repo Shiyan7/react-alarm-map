@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300&display=swap');
+
 body {
     margin: 0;
     position: relative;
     height: 100vh;
     background-color: #444;
     padding: 0 10px;
-    font-family: sans-serif;
+    font-weight: 300;
+    font-family: 'Radio Canada', sans-serif;
 }
 
 .list-reset {
@@ -20,43 +23,4 @@ body {
     padding: 0;
     font-family: inherit;
     background-color: transparent;
-}
-
-/* Map */
-
-.map {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    height: 100vh;
-
-    svg {
-        max-width: 100%;
-        max-height: calc(100% - 30px);
-    }
-}
-
-/* Region */
-
-.region {
-    path {
-        transition: fill 0.3s;
-        &:hover {
-            fill: #3c7072;
-        }
-    }
-
-    text {
-        pointer-events: none;
-    }
-
-    &--disabled {
-        pointer-events: none;
-
-        path {
-            fill: #606060;
-        }
-    }
 }

@@ -7,6 +7,7 @@ import { IRegion } from '../../types/IRegion'
 import { useDispatch } from 'react-redux'
 import { setAlarmRegions } from '../../store/reducers/alarmSlice'
 import { useAppSelector } from '../../hooks/redux'
+import styles from './Map.module.scss'
 
 export const Map: FC = () => {
 
@@ -34,7 +35,7 @@ export const Map: FC = () => {
     }, [data])
 
     return (
-        <div className="map">
+        <div className={styles.map}>
             <svg viewBox="0 0 1000 670" fill={COLOR_DEFAULT} xmlns="http://www.w3.org/2000/svg">
                 <g id="map">
                     {regions?.map((region, idx) => {

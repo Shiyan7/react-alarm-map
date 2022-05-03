@@ -1,4 +1,3 @@
-import { Burger } from './Burger'
 import { useAppSelector } from '../hooks/redux'
 import { useDispatch } from 'react-redux'
 import { toggleMenu } from '../store/reducers/menuSlice'
@@ -21,14 +20,14 @@ export const Menu = () => {
     onSwipedRight: onToggle
   });
 
-  const regions = () => {
+  const menuContent = () => {
 
     return (
       <>
-        <h2 className={styles.title}>Области в которых сейчас тревога: ({alarmRegions.length})</h2>
+        <h2 className={styles.title}>Області, в яких зараз перебуває тривога: ({alarmRegions.length})</h2>
         <ul className={classNames(styles.list, 'list-reset')}>
-          {alarmRegions?.map(region => (
-            <MenuItem item={region} />
+          {alarmRegions?.map((region, idx) => (
+            <MenuItem key={idx} item={region} />
           ))}
         </ul>
       </>
@@ -36,16 +35,13 @@ export const Menu = () => {
   }
 
   return (
-    <>
-      <Burger />
-      <div onClick={onToggle} className={classNames(styles.menu, isOpenMenu && styles.menuActive)}>
-        <div {...handlers} onClick={e => e.stopPropagation()} className={styles.content}>
-          {alarmRegions.length
-            ? regions()
-            : <h2 className={classNames(styles.title, styles.titleCenter)}>Нет тревог!</h2>
-          }
-        </div>
+    <div onClick={onToggle} className={classNames(styles.menu, isOpenMenu && styles.menuActive)}>
+      <div {...handlers} onClick={e => e.stopPropagation()} className={styles.content}>
+        {alarmRegions.length
+          ? menuContent()
+          : <h2 className={classNames(styles.title, styles.titleCenter)}>Нет тревог!</h2>
+        }
       </div>
-    </>
+    </div>
   )
 }
