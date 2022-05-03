@@ -13,10 +13,8 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "classnames": "^2.3.1",
-    "dayjs": "^1.11.1",
-    "dotenv": "^16.0.0",
-    "fs": "^0.0.1-security",
     "gh-pages": "^3.2.3",
+    "moment": "^2.29.3",
     "node-sass": "^5.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -24,6 +22,7 @@
     "react-redux": "^8.0.1",
     "react-scripts": "5.0.1",
     "react-swipeable": "^7.0.0",
+    "react-vh": "^1.1.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -52,8 +51,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/leaflet": "^1.7.9"
   }
 }

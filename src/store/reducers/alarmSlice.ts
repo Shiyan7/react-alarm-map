@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IRegion } from "../../types/IRegion";
 
-interface IState {
+interface IAlarmRegions {
     alarmRegions: IRegion[]
 }
 
-const initialState: IState = {
+const initialState: IAlarmRegions = {
     alarmRegions: []
 }
 

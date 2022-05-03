@@ -1,7 +1,7 @@
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {useDispatch} from 'react-redux'
-import {toggleMenu} from '../store/reducers/menuSlice'
-import styles from './Menu.module.scss'
+import {toggleMenu} from '../../store/reducers/menuSlice'
+import styles from './Burger.module.scss'
 import classNames from 'classnames'
 
 export const Burger = () => {

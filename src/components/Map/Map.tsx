@@ -24,6 +24,7 @@ export const Map: FC = () => {
             if(region.alert) {
                 regions.push(region)
             }
+            
         })
         
         dispatch(setAlarmRegions(regions))

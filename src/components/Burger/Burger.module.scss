@@ -1,0 +1,18 @@
+.burger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    font-size: 20px;
+    background-color: #fff;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #ccc;
+    }
+}
