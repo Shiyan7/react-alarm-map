@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { alarmAPI } from "../services/AlarmService";
 import alarmReducer from './reducers/alarmSlice'
+import menuReducer from './reducers/menuSlice'
 
 const rootReducer = combineReducers({
     alarmReducer,
+    menuReducer,
     [alarmAPI.reducerPath]: alarmAPI.reducer
 })
 

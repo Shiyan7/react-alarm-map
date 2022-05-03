@@ -3,5 +3,5 @@ export interface IRegion {
     name: string;
     name_en: string;
     alert: boolean;
-    changed: Date;
+    changed: any;
 }

@@ -1,0 +1,106 @@
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(#000, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+
+    &Active {
+        opacity: 1;
+        visibility: visible;
+
+        .content {
+            transform: translateX(0%);
+        }
+    }
+}
+
+.content {
+    --width: 320px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--width);
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: translateX(var(--width));
+    background-color: #333;
+    transition: transform 0.3s;
+    padding: 25px 15px;
+    color: #fff;
+
+    @media (max-width: 576px) {
+        --width: 280px;
+    }
+}
+
+.title {
+    margin: 0;
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 20px;
+}
+
+.titleCenter {
+    text-align: center;
+    height: calc(100% - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.burger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    font-size: 20px;
+    background-color: #fff;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #ccc;
+    }
+}
+
+.item {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    font-size: 14px;
+    border-radius: 10px;
+    background-color: rgba(#444, 0.3);
+    animation: show 0.3s;
+
+    &:not(:last-child) {
+        margin-bottom: 15px;
+    }
+}
+
+.icon {
+    margin-right: 10px;
+    color: #f00;
+}
+
+.date {
+    margin-top: 10px;
+    width: 100%;
+}
+
+@keyframes show {
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
