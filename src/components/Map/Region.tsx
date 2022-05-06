@@ -4,10 +4,10 @@ import {ISvgRegion} from '../../types/ISvgRegion'
 import styles from './Map.module.scss'
 
 interface IRegionProps {
-    region : ISvgRegion
+    region: ISvgRegion
 }
 
-export const Region : FC <IRegionProps> = ({region}) => {
+export const Region: FC<IRegionProps> = ({region}) => {
 
     return (
         <g className={classNames(styles.region, region.disabled && styles.regionDisabled)}>

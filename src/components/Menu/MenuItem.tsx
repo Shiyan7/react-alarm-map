@@ -12,7 +12,8 @@ interface IMenuItem {
 
 export const MenuItem: FC<IMenuItem> = ({ item }) => {
 
-    const date = moment(Date.parse(item.changed)).format('D MMMM, HH:mm')
+    const date = moment(Date.parse(item.changed)).format('D MMMM, HH:mm');
+    const dateFromNow = moment(Date.parse(item.changed)).fromNow();
 
     return (
         <li className={styles.item} key={item?.id}>
@@ -20,7 +21,7 @@ export const MenuItem: FC<IMenuItem> = ({ item }) => {
             <span className={styles.name}>{item?.name}</span>
             <span className={styles.date}>
                 {date},&nbsp;
-                ({moment(Date.parse(item.changed)).fromNow()})
+                ({dateFromNow})
             </span>
         </li>
     )

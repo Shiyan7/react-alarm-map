@@ -16,7 +16,7 @@ export const Menu = () => {
 
     const onToggle = () => dispatch(toggleMenu())
 
-    const handlers = useSwipeable({trackMouse: true, onSwipedRight: onToggle});
+    const handlers = useSwipeable({trackMouse: false, onSwipedRight: onToggle});
 
     const menuContent = () => {
 
@@ -24,7 +24,7 @@ export const Menu = () => {
 
         return (
 			<>
-				<h2 className={classNames('title', styles.title)}>Області, в яких зараз перебуває тривога: ({alarmRegions.length})</h2>
+				<h2 className={classNames('title', styles.title)}>Області, в яких зараз тривога: ({alarmRegions.length})</h2>
 				<ul className={classNames(styles.list, 'list-reset')}>
 					{items?.map((region, idx) => (
 						<MenuItem key={idx} item={region} />
@@ -49,7 +49,7 @@ export const Menu = () => {
                 </button>
                 {alarmRegions.length
                     ? menuContent()
-                    : <h2 className={classNames('title', styles.empty)}>Нет тревог!</h2>
+                    : <h2 className={classNames('title', styles.empty)}>Нема тривог!</h2>
 				}
             </div>
         </div>
